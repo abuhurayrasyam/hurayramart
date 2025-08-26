@@ -13,6 +13,7 @@ const Navbar = () => {
     const navLinks = (
         <>
             <Link href={'/'} className={`m-2 text-[18px] font-bold cursor-pointer ${pathname === '/' ? 'text-primary' : ' text-secondary hover:text-accent'}`}>Home</Link>
+            <Link href={'/products'} className={`m-2 text-[18px] font-bold cursor-pointer ${pathname === '/products' ? 'text-primary' : ' text-secondary hover:text-accent'}`}>Products</Link>
         </>
     )
 
