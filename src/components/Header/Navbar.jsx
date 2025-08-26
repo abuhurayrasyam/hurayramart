@@ -2,9 +2,12 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import SignOut from '../Auth/SignOut';
+import { useSession } from 'next-auth/react';
 
 const Navbar = () => {
 
+    const { status } = useSession();
     const pathname = usePathname();
 
     const navLinks = (
@@ -33,6 +36,15 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+                    {
+                        status == 'authenticated' ? (
+                            <>
+                                <SignOut></SignOut>
+                            </>
+                        ) : (
+                            <Link href={'/signin'} className='btn hover:bg-secondary hover:text-white mr-2'>SignIn</Link>
+                        )
+                    }
                 </div>
             </div>
         </nav>

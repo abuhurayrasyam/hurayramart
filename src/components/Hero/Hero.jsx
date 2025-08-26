@@ -40,10 +40,10 @@ export default function Hero() {
             View Products
           </Link>
           <Link
-            href="/login"
+            href="/signin"
             className="px-6 py-3 border border-accent text-accent rounded-2xl font-semibold hover:bg-accent hover:text-white transition"
           >
-            Login
+            SignIn
           </Link>
         </motion.div>
       </div>
