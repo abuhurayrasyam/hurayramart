@@ -39,6 +39,7 @@ const Navbar = () => {
                     {
                         status == 'authenticated' ? (
                             <>
+                                <Link href={'/dashboard'} className='btn hover:bg-secondary hover:text-white mr-2'>Dashboard</Link>
                                 <SignOut></SignOut>
                             </>
                         ) : (
