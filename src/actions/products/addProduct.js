@@ -2,9 +2,9 @@
 import mongodbConnect, { collectionNames } from "@/lib/mongodb";
 
 export async function addProduct(payload) {
-  const { name, description, price, email } = payload;
+  const { name, description, price, image, email } = payload;
 
-  if (!name || !description || !price) {
+  if (!name || !description || !price || !image) {
     return { error: "Missing required fields" };
   }
 
@@ -15,6 +15,7 @@ export async function addProduct(payload) {
       name,
       description,
       price: parseFloat(price),
+      image,
       email,
       createdAt: new Date(),
     });

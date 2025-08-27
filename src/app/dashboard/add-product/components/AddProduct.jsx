@@ -6,7 +6,12 @@ import Swal from "sweetalert2";
 
 const AddProduct = () => {
   const { data: session } = useSession();
-  const [form, setForm] = useState({ name: "", description: "", price: "" });
+  const [form, setForm] = useState({
+    name: "",
+    description: "",
+    price: "",
+    image: "",
+  });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -47,13 +52,16 @@ const AddProduct = () => {
         text: res.message,
         confirmButtonColor: "var(--color-primary)",
       });
-      setForm({ name: "", description: "", price: "" });
+      setForm({ name: "", description: "", price: "", image: "" });
     }
   };
 
   return (
     <div className="max-w-lg mx-auto mt-12 bg-white rounded-2xl shadow-xl p-8 border">
-      <h2 className="text-3xl font-bold text-center mb-8 text-accent">
+      <h2
+        className="text-3xl font-bold text-center mb-8"
+        style={{ color: "var(--color-accent)" }}
+      >
         Add New Product
       </h2>
 
@@ -92,6 +100,19 @@ const AddProduct = () => {
             value={form.price}
             onChange={handleChange}
             placeholder="Enter price"
+            className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] outline-none"
+            required
+          />
+        </div>
+
+        <div>
+          <label className="block mb-2 font-medium">Product Image URL</label>
+          <input
+            type="url"
+            name="image"
+            value={form.image}
+            onChange={handleChange}
+            placeholder="Enter image link"
             className="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[var(--color-primary)] outline-none"
             required
           />
