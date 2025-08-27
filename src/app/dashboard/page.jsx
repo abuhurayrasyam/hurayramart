@@ -1,10 +1,14 @@
-'use client';
-import React from 'react';
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import MyProfile from "./components/MyProfile";
 
-const page = () => {
-    return (
-        <div className="text-xl font-bold">My Profile</div>
-    );
-};
+export default async function AddProductPage() {
+  const session = await getServerSession(authOptions);
 
-export default page;
+  if (!session) {
+    redirect("/signin");
+  }
+
+  return <MyProfile></MyProfile>;
+}

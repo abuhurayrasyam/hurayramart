@@ -1,14 +1,14 @@
-'use client';
-import Loading from '@/components/Loading';
-import React, { Suspense } from 'react';
-import AddProduct from './components/AddProduct';
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import AddProduct from "./components/AddProduct";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
-const page = () => {
-    return (
-        <Suspense fallback={Loading}>
-            <AddProduct></AddProduct>
-        </Suspense>
-    );
-};
+export default async function AddProductPage() {
+  const session = await getServerSession(authOptions);
 
-export default page;
+  if (!session) {
+    redirect("/signin");
+  }
+
+  return <AddProduct />;
+}

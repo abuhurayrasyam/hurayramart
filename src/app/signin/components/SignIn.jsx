@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 const SignIn = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get('callbackUrl') || '/';
+    const callbackUrl = searchParams.get('callbackUrl') || '/products';
 
     const { register, handleSubmit, formState: { errors }} = useForm();
 

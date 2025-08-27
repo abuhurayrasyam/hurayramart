@@ -14,7 +14,7 @@ import { signIn } from 'next-auth/react';
 const SignUp = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
-    const callbackUrl = searchParams.get('callbackUrl') || '/';
+    const callbackUrl = searchParams.get('callbackUrl') || '/products';
 
     const {register, handleSubmit, formState: {errors}} = useForm();
 
