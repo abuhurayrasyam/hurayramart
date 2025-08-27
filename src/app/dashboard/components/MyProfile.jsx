@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { getUserByEmail } from "@/actions/users/getUser";
+import Loading from "@/components/Loading";
 
 const MyProfile = () => {
   const { data: session } = useSession();
@@ -25,9 +26,7 @@ const MyProfile = () => {
 
   if (!user) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <p className="text-lg text-gray-500">Loading profile...</p>
-      </div>
+      <Loading></Loading>
     );
   }
 
